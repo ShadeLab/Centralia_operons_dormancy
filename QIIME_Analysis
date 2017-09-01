@@ -11,5 +11,10 @@ pick_closed_reference_otus.py -m usearch61 -i ferrenburg_seqs.fna -o ferrenburg_
 OTU tables need to be converted into json format.
 
 ```
-biom convert
+biom convert -i deangelis_closed/otu_table.biom -o deangelis_closed/otu_table_json.biom --to-json --table-type='OTU table' --header-key=taxonomy
+biom convert -i centralia_closed/otu_table.biom -o centralia_closed/otu_table_json.biom --to-json --table-type='OTU table' --header-key=taxonomy
+biom convert -i nemergut_closed/otu_table.biom -o nemergut_closed/otu_table_json.biom --to-json --table-type='OTU table' --header-key=taxonomy
+biom convert -i ferrenburg_closed/otu_table.biom -o ferrenburg_closed/otu_table_json.biom --to-json --table-type='OTU table' --header-key=taxonomy
 ```
+
+Upload file to Galaxy server for PICRUSt analysis
