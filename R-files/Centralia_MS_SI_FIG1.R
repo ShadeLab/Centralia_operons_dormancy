@@ -1,20 +1,19 @@
 ####################################################################
 ##############################SI FIGURE 1###########################
 ####################################################################
-#read in Nemergut et al. (2015) data
 library(readr)
 nemergut_operon <- read_delim("~/nemergut_operon.txt", "\t", escape_double = FALSE, trim_ws = TRUE)
-library(plyr)
+#change time to factor
+nemergut_operon$T<-as.factor(nemergut_operon$T)
+
+#plot the data
 library(ggplot2)
-#summarize the data & plot it
-nemergut_sum<-ddply(nemergut_operon, c("TimeFull2", "T"), summarise, N= length(WeightedCopyNo), mean=mean(WeightedCopyNo), sd=sd(WeightedCopyNo), se=sd/sqrt(N))
-nemer_copy<-ggplot(nemergut_sum, aes(T, mean))+
-  geom_point(aes(cex=1.5), position=dodge)+
-  geom_errorbar(aes(ymax=mean+se, ymin=mean-se, width=0.2, cex=0.2), position=dodge)+ 
-  theme_bw()+
-  xlab("Time Since Start of Exp.")+
+nemer_copy<-ggplot(nemergut_operon, aes(T, WeightedCopyNo))+
+  geom_boxplot()+
+   theme_bw()+
+  xlab("Time Since Start of Exp")+
   ylab("Weighted Mean Ribosomal Copy Number")+
-  coord_cartesian(ylim=c(0,10), xlim=c(0,100))+
+  coord_cartesian(ylim=c(0,10))+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 
 
