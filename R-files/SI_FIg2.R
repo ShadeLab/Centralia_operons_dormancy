@@ -4,7 +4,7 @@
 
 #analysis performed in R V 3.4
 #Correlation between PICRUSt and rrnDB in Centralia
-picrust_rrndb <- read.delim("C:/Users/patty/Documents/picrust_rrndb.txt")
+picrust_rrndb <- read.delim("picrust_rrndb.txt")
 library(ggplot2)
 ggplot(picrust_rrndb, aes(Weighted_Copy_PC, Weighted_Copy_rrn, colour=Type))+
   geom_point(aes(cex=1.2))+
